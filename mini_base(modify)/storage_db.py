@@ -67,7 +67,8 @@ import ctypes
 # --------------------------------------------
 
 class Storage(object):
-
+    # Author: Kevinlmh  2507939045@qq.com
+    # 修改存储文件后缀
     # ------------------------------
     # constructor of the class
     # input:

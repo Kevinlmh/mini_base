@@ -1,4 +1,6 @@
 # init_db.py
+# Author: Kevinlmh  2507939045@qq.com
+# 存储初始表
 import schema_db
 import storage_db
 

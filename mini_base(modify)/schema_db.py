@@ -93,15 +93,8 @@ class Schema(object):
     #       table_name
     #------------------------------
     def viewTableStructure(self, table_name):
-        '''
-        tmp=[]
-        for i in range(len(self.headObj.tableNames)):
-            if self.headObj.tableNames[i][0] == table_name:
-                tmp = [j.strip() for j in self.headObj.tableFields[i]]
-                print '|'.join(tmp)
-                return tmp
-        '''
-
+        # Author: Kevinlmh  2507939045@qq.com
+        # 表模式存储
         """
         显式指定表的结构
         输入: table_name - 要显示的表名

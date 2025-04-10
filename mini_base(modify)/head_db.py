@@ -51,6 +51,8 @@ class Header(object):
                 print (self.tableFields[i])
 
     def get_table_fields(self, table_name):
+        # Author: Kevinlmh  2507939045@qq.com
+        # 缓存
         """
         获取指定表的字段列明
         输入：table_name - 表名
