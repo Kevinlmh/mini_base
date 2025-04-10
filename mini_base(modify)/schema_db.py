@@ -93,7 +93,6 @@ class Schema(object):
     #       table_name
     #------------------------------
     def viewTableStructure(self, table_name):
-        print('the structure of table '.encode('utf-8')+table_name+' is as follows:'.encode('utf-8'))
         '''
         tmp=[]
         for i in range(len(self.headObj.tableNames)):
@@ -102,6 +101,29 @@ class Schema(object):
                 print '|'.join(tmp)
                 return tmp
         '''
+
+        """
+        显式指定表的结构
+        输入: table_name - 要显示的表名
+        输出: 打印表结构信息
+        """
+        print('the structure of table '.encode('utf-8')+table_name+' is as follows:'.encode('utf-8'))
+        if table_name.strip() in self.headObj.tableFields:
+            fields = self.headObj.tableFields[table_name.strip()]
+            print("Field Name\tType\tLength")
+            for field in fields:
+                type_str = ""
+                if field[1] == 0:
+                    type_str = "str"
+                elif field[1] == 1:
+                    type_str = "varstr"
+                elif field[1] == 2:
+                    type_str = "int"
+                elif field[1] == 3:
+                    type_str = "bool"
+                print(f"{field[0].strip()}\t{type_str}\t{field[2]}")
+        else:
+            print("Table not found")
         # to be inserted here
 
     # ------------------------------------------------

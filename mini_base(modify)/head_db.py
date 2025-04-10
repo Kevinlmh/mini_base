@@ -49,3 +49,13 @@ class Header(object):
             for i in range(len(self.tableNames)):
                 print(self.tableNames[i])
                 print (self.tableFields[i])
+
+    def get_table_fields(self, table_name):
+        """
+        获取指定表的字段列明
+        输入：table_name - 表名
+        输入：返回该表的字段列表，每个字段是(fieldname,fieldtype,fieldlength)元组
+        """
+        if table_name.strip() in self.tableFields:
+            return self.tableFields[table_name.strip()]
+        return None

@@ -80,15 +80,17 @@ class Storage(object):
         self.record_list = []
         self.record_Position = []
 
-        if not os.path.exists(tablename + '.dat'.encode('utf-8')):  # the file corresponding to the table does not exist
-            print('table file '.encode('utf-8') + tablename + '.dat does not exists'.encode('utf-8'))
-            self.f_handle = open(tablename + '.dat'.encode('utf-8'), 'wb+')
+        #修改文件扩展名为 .ins
+        filename = tablename.strip() + '.ins'
+        if not os.path.exists(filename):  # the file corresponding to the table does not exist
+            print('table file '.encode('utf-8') + filename + 'does not exists'.encode('utf-8'))
+            self.f_handle = open(filename, 'wb+')       #修改打开的文件为.ins后缀文件
             self.f_handle.close()
             self.open = False
-            print(tablename + '.dat has been created'.encode('utf-8'))
+            print(filename + 'has been created'.encode('utf-8'))
 
-        self.f_handle = open(tablename + '.dat'.encode('utf-8'), 'rb+')
-        print('table file '.encode('utf-8') + tablename + '.dat has been opened'.encode('utf-8'))
+        self.f_handle = open(filename, 'rb+')
+        print('table file '.encode('utf-8') + filename + 'has been opened'.encode('utf-8'))
         self.open = True
 
         self.dir_buf = ctypes.create_string_buffer(BLOCK_SIZE)
