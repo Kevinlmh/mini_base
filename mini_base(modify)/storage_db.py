@@ -81,17 +81,18 @@ class Storage(object):
         self.record_list = []
         self.record_Position = []
 
-        #修改文件扩展名为 .ins
-        filename = tablename.strip() + '.ins'
-        if not os.path.exists(filename):  # the file corresponding to the table does not exist
-            print('table file '.encode('utf-8') + filename + 'does not exists'.encode('utf-8'))
-            self.f_handle = open(filename, 'wb+')       #修改打开的文件为.ins后缀文件
+        # Author: Kevinlmh  2507939045@qq.com
+        # 修改表实例存储文件后缀 .dat改为.ins
+
+        if not os.path.exists(tablename + '.ins'.encode('utf-8')):  # the file corresponding to the table does not exist
+            print('table file '.encode('utf-8') + tablename + '.ins does not exists'.encode('utf-8'))
+            self.f_handle = open(tablename + '.ins'.encode('utf-8'), 'wb+')
             self.f_handle.close()
             self.open = False
-            print(filename + 'has been created'.encode('utf-8'))
+            print(tablename + '.ins has been created'.encode('utf-8'))
 
-        self.f_handle = open(filename, 'rb+')
-        print('table file '.encode('utf-8') + filename + 'has been opened'.encode('utf-8'))
+        self.f_handle = open(tablename + '.ins'.encode('utf-8'), 'rb+')
+        print('table file '.encode('utf-8') + tablename + '.ins has been opened'.encode('utf-8'))
         self.open = True
 
         self.dir_buf = ctypes.create_string_buffer(BLOCK_SIZE)
@@ -327,10 +328,12 @@ class Storage(object):
             self.f_handle.close()
             self.open = False
 
-        # step 2: remove the file from os   
+        # step 2: remove the file from os
+        # Author: Kevinlmh  2507939045@qq.com
+        # 删除表做同样修改
         tableName.strip()
-        if os.path.exists(tableName + '.dat'.encode('utf-8')):
-            os.remove(tableName + '.dat'.encode('utf-8'))
+        if os.path.exists(tableName + '.ins'.encode('utf-8')):
+            os.remove(tableName + '.ins'.encode('utf-8'))
 
         return True
 

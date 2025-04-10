@@ -94,7 +94,7 @@ class Schema(object):
     #------------------------------
     def viewTableStructure(self, table_name):
         # Author: Kevinlmh  2507939045@qq.com
-        # 表模式存储
+        # 表模式展示
         """
         显式指定表的结构
         输入: table_name - 要显示的表名
@@ -305,9 +305,8 @@ class Schema(object):
             self.headObj.isStored = True
             self.headObj.lenOfTableNum += 1
             self.headObj.offsetOfBody += fieldNum * MAX_FIELD_LEN
-            self.headObj.tableNames.append(nameContent)
-            # fieldTuple = tuple(fieldList)
-            self.headObj.tableFields[tableName.strip()]=fieldList
+            self.headObj.tableNames.append((tableName.strip(), fieldNum, writePos))
+            self.headObj.tableFields[tableName.strip()] = fieldList
 
     # -------------------------------
     # to determine whether the table named table_name exist, depending on the main memory structures
